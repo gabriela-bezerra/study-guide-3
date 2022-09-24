@@ -5,6 +5,7 @@ from flask import Flask, render_template, session, request, redirect
 app = Flask(__name__)
 app.secret_key = "RANDOM SECRET KEY"
 
+
 @app.route('/')
 def show_homepage():
     """Show homepage."""
@@ -20,12 +21,20 @@ def show_homepage():
 @app.route('/form')
 def show_form():
     """Show form with message options."""
-    pass
+    return render_template('form.html')
+
 
 @app.route('/results')
 def show_results():
     """Show resulting message."""
-    pass
+    return render_template('results.html')
+
+
+@app.route('/save-name')
+def save_name():
+    session['name']
+
+    return redirect('/')
 
 
 if __name__ == "__main__":
